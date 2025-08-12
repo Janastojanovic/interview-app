@@ -19,5 +19,6 @@ Aplikacija omogućava registraciju korisnika uz sledeće funkcionalnosti:
 - **MySQL** baza podataka
 - **Composer** za autoloading
 - **PSR-4** autoloading standard
+- **Docker**
 
 
