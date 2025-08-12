@@ -35,7 +35,7 @@ class UserService implements UserServiceInterface
         }
 
         $maxMindCheck = $this->maxMindService->simulateMaxMindCheck($user->email, $user->ipAddress);
-        if ($maxMindCheck->success) {
+        if (!$maxMindCheck->success) {
             return new GenericResponse(success: false, errorMessage: $maxMindCheck->errorMessage);
         }
 

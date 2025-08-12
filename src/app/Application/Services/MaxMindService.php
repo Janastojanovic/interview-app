@@ -14,10 +14,10 @@ class MaxMindService
 
         foreach ($badPatterns as $pattern) {
             if (stripos($email, $pattern) !== false || stripos($ip, $pattern) !== false) {
-                return new GenericResponse(success: true);
+
+                return new GenericResponse(success: false, errorMessage: 'MaxMind error');
             }
         }
-
-        return new GenericResponse(success: false, errorMessage: 'MaxMind error');
+        return new GenericResponse(success: true);
     }
 }
