@@ -21,4 +21,39 @@ Aplikacija omogućava registraciju korisnika uz sledeće funkcionalnosti:
 - **PSR-4** autoloading standard
 - **Docker**
 
+### Pokretanje
+
+- Napraviti fajl .env(na istoj putanji kao .env.example)
+  - Podesiti env konstante(kao u .env.example)
+    
+- cd docker
+- docker compose up -d
+- docker exec -it interview-app-app bash
+- composer install
+- composer dump-autoload -o
+  
+- docker exec -it interview-app-db bash
+- mysql -u -root -p
+  - Uneti sifru iz .env
+- create database ime_baze
+
+**SQL za kreiranje users tabele:**
+  use ime_baze;
+
+  CREATE TABLE users(
+  id int unsigned primary key auto_increment,
+  email varchar(255) unique not null,
+  password varchar(255) not null
+  )
+  
+**SQL za kreiranje user_logs tabele:**
+  use ime_baze;
+  
+  CREATE TABLE user_logs(
+  id int unsigned primary key auto_increment,
+  action varchar(255) not null,
+  user_id int not null,
+  log_time datetime not null,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+  )
 
